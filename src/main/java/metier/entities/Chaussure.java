@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,22 @@ public class Chaussure implements Serializable{
 	@Column (name="NOM_CHAUSS")
 	private String nomChauss;
 	private double prix;
+	
+	@ManyToOne
+	private Lieu lieu;
+	public Chaussure(String nomChauss, double prix, Lieu lieu) {
+
+		super();
+		this.nomChauss = nomChauss;
+		this.prix = prix;
+		this.setLieu(lieu);
+		}
+		public Lieu getLieu() {
+		return lieu;
+		}
+		public void setLieu(Lieu lieu) {
+		this.lieu = lieu;
+		}
 	public Chaussure() {
 	super();
 	}
